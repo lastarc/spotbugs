@@ -21,6 +21,8 @@ package edu.umd.cs.findbugs.filter;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -38,7 +40,7 @@ class Utf8FilterFileNameTest {
 
     @Test
     void loadFilter() {
-        Path filterPath = folderPath.resolve("äéàùçæð.xml");
+        Path filterPath = folderPath.resolve(URLEncoder.encode("äéàùçæð.xml", StandardCharsets.UTF_8));
 
         try {
             Files.createFile(filterPath);
